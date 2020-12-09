@@ -35,12 +35,16 @@ class Arena:
         print(bot1, "Vs.", bot2)
         bot1Throw = bot1.getFirstThrow()
         bot2Throw = bot2.getFirstThrow()
-        self.tallyResult(evaluateThrows(bot1Throw, bot2Throw))
+        self.tallyResult(evaluateThrows(bot1Throw, bot2Throw), bot1, bot2)
         while self.__gamesPlayed < numberOfRounds:
             bot1Throw = bot1.getNextThrow()
             bot2Throw = bot2.getNextThrow()
-            self.tallyResult(evaluateThrows(bot1Throw, bot2Throw))
+            self.printThrows(bot1Throw,bot2Throw,bot1,bot2)
+            self.tallyResult(evaluateThrows(bot1Throw, bot2Throw), bot1, bot2)
         self.printResults(bot1, bot2)
+
+    def printThrows(self, bot1Throw, bot2Throw, bot1, bot2):
+        print(bot1, "-", bot1Throw, " ", bot2, "-", bot2Throw)
 
     def printResults(self, bot1, bot2):
         print(bot1, "won", self.__bot1Wins, "games")
@@ -48,9 +52,16 @@ class Arena:
         print("There were", (self.__gamesPlayed - self.__bot1Wins - self.__bot2Wins), "ties")
         print()
 
-    def tallyResult(self, result):
+    def tallyResult(self, result, bot1, bot2):
         if result == "Bot1":
             self.__bot1Wins += 1
+            bot1.setPreviousResult("Win")
+            bot2.setPreviousResult("Lose")
         elif result == "Bot2":
             self.__bot2Wins += 1
+            bot1.setPreviousResult("Lose")
+            bot2.setPreviousResult("Win")
+        else:
+            bot1.setPreviousResult("Tie")
+            bot2.setPreviousResult("Tie")
         self.__gamesPlayed += 1
