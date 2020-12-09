@@ -1,16 +1,20 @@
-# This is a sample Python script.
-
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+from RockBot import RockBot
+from ScissorsBot import ScissorsBot
+from PaperBot import PaperBot
+from Arena import Arena
 
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    rockBot = RockBot()
+    scissorsBot = ScissorsBot()
+    paperBot = PaperBot()
+    arena = Arena()
+    arena.battle(rockBot, scissorsBot, 5)
+    arena.__init__()
+    arena.battle(paperBot, paperBot, 5)
+    arena.__init__()
+    arena.battle(rockBot, scissorsBot, 5)
+    arena.__init__()
+
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
