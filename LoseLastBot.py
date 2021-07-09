@@ -1,28 +1,6 @@
 from Bot import Bot
 
 
-def getWinningThrow(opponentThrow):
-    if opponentThrow == "Rock":
-        return "Paper"
-    elif opponentThrow == "Paper":
-        return "Scissors"
-    elif opponentThrow == "Scissors":
-        return "Rock"
-    else:
-        return "Error"
-
-
-def getLosingThrow(opponentThrow):
-    if opponentThrow == "Rock":
-        return "Scissors"
-    elif opponentThrow == "Paper":
-        return "Rock"
-    elif opponentThrow == "Scissors":
-        return "Paper"
-    else:
-        return "Error"
-
-
 class LoseLastBot(Bot):
     def __init__(self):
         self.__previousThrow = "Rock"

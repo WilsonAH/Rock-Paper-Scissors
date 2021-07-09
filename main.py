@@ -19,6 +19,3 @@ if __name__ == '__main__':
     arena.__init__()
     beatLastBot.__init__()
     arena.battle(beatLastBot, scissorsThenPaperThenRockBot, 20)
-
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/

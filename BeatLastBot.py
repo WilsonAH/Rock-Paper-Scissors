@@ -1,36 +1,16 @@
 from Bot import Bot
 
 
-def getWinningThrow(opponentThrow):
-    if opponentThrow == "Rock":
-        return "Paper"
-    elif opponentThrow == "Paper":
-        return "Scissors"
-    elif opponentThrow == "Scissors":
-        return "Rock"
-    else:
-        return "Error"
-
-
-def getLosingThrow(opponentThrow):
-    if opponentThrow == "Rock":
-        return "Scissors"
-    elif opponentThrow == "Paper":
-        return "Rock"
-    elif opponentThrow == "Scissors":
-        return "Paper"
-    else:
-        return "Error"
-
-
 class BeatLastBot(Bot):
     def __init__(self):
         self.__previousThrow = "Rock"
         super().__init__()
 
+    # Previous throw is initialized to "Rock" so the first throw will be "Rock"
     def getFirstThrow(self):
-        return "Rock"
+        return self.__previousThrow
 
+    # The bot will throw whatever will beat the opponents last throw
     def getNextThrow(self):
         # if we won the previous match, using the same throw will win
         if self._previousResult == "Win":
